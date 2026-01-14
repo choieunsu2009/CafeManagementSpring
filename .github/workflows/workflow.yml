@@ -43,8 +43,8 @@ jobs:
       # 이미지 빌드 & Push
       - name: Build and Push Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/cafeManege:latest .
-          docker push ${{ secrets.DOCKER_USERNAME }}/cafeManege:latest
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/cafemanege:latest .
+          docker push ${{ secrets.DOCKER_USERNAME }}/cafemanege:latest
 
       # EC2 에 ssh 로 접속
       - name: Deploy to EC2
@@ -56,8 +56,8 @@ jobs:
           script: |
             docker stop cafeManege || true
             docker rm cafeManege || true
-            docker rmi ${{ secrets.DOCKER_USERNAME }}/cafeManege:latest || true
-            docker pull ${{ secrets.DOCKER_USERNAME }}/cafeManege:latest
+            docker rmi ${{ secrets.DOCKER_USERNAME }}/cafemanege:latest || true
+            docker pull ${{ secrets.DOCKER_USERNAME }}/cafemanege:latest
             docker run -d -p 80:8080 \
               -e URL=jdbc:mysql://${{ secrets.RDS_URL }}/admin \
               -e USERNAME=${{ secrets.RDS_USERNAME }} \
