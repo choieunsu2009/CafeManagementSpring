@@ -1,0 +1,62 @@
+{{>layouts/header}}
+{{#customer}}
+<div style="width: 80%; margin: 0 auto; padding-top: 10px">
+    <br>
+    <br>
+
+        <h1 style="text-align: center"><strong>{{name}}</strong> 고객님 정보</h1>
+        <br>
+
+        <div>
+            <strong style="font-size: large;">ID: {{userId}}</strong>
+            <button type="button"
+                    class="btn btn-sm btn-outline-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#edit-modal"
+                    data-bs-id="{{userId}}"
+                    data-bs-name="{{name}}"
+                    data-bs-phone="{{phone}}">정보 수정</button>
+            <a href="/customer/delete/{{userId}}" class="btn btn-sm btn-outline-danger">유저 삭제</a>
+        </div>
+        <br>
+        <p style="font-size: large;">전화번호 : <strong>{{phone}}</strong></p>
+</div>
+
+
+<div class="modal fade" id="edit-modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    댓글 수정</h5>
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- 댓글 수정 폼 -->
+                <form action="/customer/edit" method="post">
+                    <!-- 닉네임 입력 -->
+                    <div class="mb-3">
+                        <label for="edit-name" class="form-label">이름</label>
+                        <input type="text" class="form-control" id="edit-name" name="name" value="{{name}}">
+                    </div>
+                    <!-- 댓글 본문 입력 -->
+                    <div class="mb-3">
+                        <label for="edit-phone" class="form-label">전화번호</label>
+                        <input type="text" class="form-control" id="edit-phone" name="phone" placeholder=" - 없이 010부터 입력 " value="{{phone}}">
+                    </div>
+                    <!-- 히든 인풋 -->
+                    <input type="hidden" id="edit-id" name="userId" value="{{userId}}">
+                    <!-- 전송 버튼 -->
+                    <button type="submit" class="btn btn-primary"
+                            id="update-btn">수정 완료</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/customer}}
+{{>layouts/footer}}

@@ -1,0 +1,32 @@
+{{>layouts/header}}
+
+<br>
+<br>
+
+<h1 style="font-size: xx-large; text-align: center"><strong>고객 등록</strong></h1>
+
+<form class="container" action="/customer/addApi" method="post">
+    <input type="hidden" value=null>
+    <div class="mb-3">
+        <label class="form-label" for="">이름</label>
+        <input type="text" name="name" class="form-control" id="name-input">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="">전화번호</label>
+        <input type="text" name="phone" class="form-control" id="phone-input">
+    </div>
+    <button type="submit" class="btn btn-primary" id="submitBTN">등록</button>
+</form>
+<script>
+    // setTimeout(()=>{}, 5000)
+    console.log(1234)
+    const btn = document.querySelector("#submitBTN");
+    const name = document.querySelector("#name-input")
+    const phone = document.querySelector("#phone-input")
+    // btn.addEventListener("click", setTimeout(() => {
+    btn.addEventListener("click", () => {
+            console.log(name.value)
+            console.log(phone.value)
+        })
+</script>
+{{>layouts/footer}}
