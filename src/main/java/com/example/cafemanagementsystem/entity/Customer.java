@@ -13,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @Getter
+@Table(name = "Customer")
 public class Customer {
     @Id
     @GeneratedValue

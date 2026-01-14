@@ -9,6 +9,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @Getter
+@Table(name = "Point")
 public class Point {
     @Id
     @GeneratedValue

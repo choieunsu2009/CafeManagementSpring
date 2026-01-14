@@ -59,7 +59,7 @@ jobs:
             docker rmi ${{ secrets.DOCKER_USERNAME }}/cafemanage:latest || true
             docker pull ${{ secrets.DOCKER_USERNAME }}/cafemanage:latest
             docker run -d -p 80:8080 \
-              -e URL=jdbc:mysql://${{ secrets.RDS_URL }}/cafeManage \
+              -e URL=jdbc:mysql://${{ secrets.RDS_URL }} \
               -e USERNAME=${{ secrets.RDS_USERNAME }} \
               -e PASSWORD=${{ secrets.RDS_PASSWORD }} \
               --name cafeManage \

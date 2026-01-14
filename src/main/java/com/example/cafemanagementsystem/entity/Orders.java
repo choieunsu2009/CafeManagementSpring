@@ -9,6 +9,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @Getter
+@Table(name = "Orders")
 public class Orders {
     @Id
     @GeneratedValue

@@ -9,6 +9,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @Getter
+@Table(name = "Menu")
 public class Menu {
     @Id
     @GeneratedValue
