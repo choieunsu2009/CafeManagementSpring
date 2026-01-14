@@ -12,7 +12,7 @@ import lombok.ToString;
 @Table(name = "Menu")
 public class Menu {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long menuId;
 
     @Column
