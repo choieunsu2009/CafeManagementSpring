@@ -54,8 +54,8 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           script: |
-            docker stop cafeManage || true
-            docker rm cafeManage || true
+            docker stop cafemanage || true
+            docker rm cafemanage || true
             docker rmi ${{ secrets.DOCKER_USERNAME }}/cafemanage:latest || true
             docker pull ${{ secrets.DOCKER_USERNAME }}/cafemanage:latest
             docker run -d -p 80:8080 \
