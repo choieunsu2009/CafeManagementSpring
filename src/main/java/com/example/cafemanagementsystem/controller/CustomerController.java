@@ -48,6 +48,7 @@ public class CustomerController {
         return "customer/customerInfo";
     }
 
+    // 고객 정보 수정
     @PostMapping("/customer/edit")
     public String customerEdit(CustomerDTO dto){
         Customer customerEntity = dto.toEntity();
