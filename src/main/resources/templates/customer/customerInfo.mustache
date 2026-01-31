@@ -20,6 +20,35 @@
         </div>
         <br>
         <p style="font-size: large;">전화번호 : <strong>{{phone}}</strong></p>
+
+    <div>
+        <h2>포인트 기록</h2>
+        <table class="table">
+            <thead>
+            <tr>
+<!--                private Long RID;-->
+<!--                private boolean status;-->
+<!--                private Long point;-->
+<!--                private Long total_point;-->
+<!--                private Customer userId;-->
+                <th scope="col">ID</th>
+                <th scope="col">포인트</th>
+                <th scope="col">총 포인트</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#point}}
+            <tr>
+
+                <td>{{RID}}</td>
+                <td><p class="{{status}}">{{point}}</p></td>
+                <td>{{total_point}}</td>
+
+            </tr>
+            {{/point}}
+            </tbody>
+        </table>
+    </div>
 </div>
 
 
@@ -35,21 +64,16 @@
                         aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- 댓글 수정 폼 -->
                 <form action="/customer/edit" method="post">
-                    <!-- 닉네임 입력 -->
                     <div class="mb-3">
                         <label for="edit-name" class="form-label">이름</label>
                         <input type="text" class="form-control" id="edit-name" name="name" value="{{name}}">
                     </div>
-                    <!-- 댓글 본문 입력 -->
                     <div class="mb-3">
                         <label for="edit-phone" class="form-label">전화번호</label>
                         <input type="text" class="form-control" id="edit-phone" name="phone" placeholder=" - 없이 010부터 입력 " value="{{phone}}">
                     </div>
-                    <!-- 히든 인풋 -->
                     <input type="hidden" id="edit-id" name="userId" value="{{userId}}">
-                    <!-- 전송 버튼 -->
                     <button type="submit" class="btn btn-primary"
                             id="update-btn">수정 완료</button>
                 </form>

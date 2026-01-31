@@ -2,7 +2,11 @@ package com.example.cafemanagementsystem.controller;
 
 import com.example.cafemanagementsystem.dto.CustomerDTO;
 import com.example.cafemanagementsystem.entity.Customer;
+import com.example.cafemanagementsystem.entity.Orders;
+import com.example.cafemanagementsystem.entity.Point;
 import com.example.cafemanagementsystem.repo.CustomerRepo;
+import com.example.cafemanagementsystem.repo.OrderRepo;
+import com.example.cafemanagementsystem.repo.PointRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,11 +16,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
+
 @Slf4j
 @Controller
 public class CustomerController {
     @Autowired
     private CustomerRepo customerRepo;
+    @Autowired
+    private OrderRepo orderRepo;
+    @Autowired
+    private PointRepo pointRepo;
 
     // 고객 등록 페이지
     @GetMapping("/customer/add")
@@ -41,7 +51,11 @@ public class CustomerController {
     @GetMapping("/customer/info/{id}")
     public String customerInfo(@PathVariable Long id, Model model){
         Customer customerEntity = customerRepo.findCustomerByUserId(id);
+        ArrayList<Orders> orders = orderRepo.findOrderByUserId_UserId(id);
+        ArrayList<Point> point = pointRepo.findPointByUserId_UserId(id);
         model.addAttribute("customer", customerEntity);
+        model.addAttribute("order", orders);
+        model.addAttribute("point", point);
         if (customerEntity == null){
             return "customer/customerNULL";
         }

@@ -7,8 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.ArrayList;
 
 public interface PointRepo extends JpaRepository<Point, Long> {
+    @Query(value = "select * from point where user_id = :userId order by RID DESC;", nativeQuery = true)
     ArrayList<Point> findPointByUserId_UserId(Long userId);
 
-    @Query(value = "select * from Point where userId = :userId order by RID DESC LIMIT 1;", nativeQuery = true)
-    ArrayList<Point> findLatestByUserId(Long userId);
+    @Query(value = "select * from point where user_id = :userId order by RID DESC LIMIT 1;", nativeQuery = true)
+    Point findLatestByUserId(Long userId);
 }

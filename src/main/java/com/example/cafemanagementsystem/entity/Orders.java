@@ -3,12 +3,14 @@ package com.example.cafemanagementsystem.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 @Entity
 @AllArgsConstructor
 @ToString
 @Getter
+@Setter
 @Table(name = "Orders")
 public class Orders {
     @Id
