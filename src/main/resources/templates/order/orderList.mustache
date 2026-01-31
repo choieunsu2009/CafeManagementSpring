@@ -1,0 +1,49 @@
+{{>layouts/header}}
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center my-4">
+        <h1>주문</h1>
+        <div>
+            <a type="button" class="btn btn-outline-primary" href="/orders/now">진행중인 주문</a>
+            <a type="button" class="btn btn-outline-primary" href="/orders/done">완료된 주문</a>
+            <a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#addOrderModal">주문 받기</a>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">사용자명</th>
+            <th scope="col">주문 메뉴</th>
+            <th scope="col">금액</th>
+            <th scope="col">상태</th>
+            <th scope="col">삭제</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#order}}
+        <tr>
+            <td><a href="/customer/info/{{userId.userId}}">{{userId.name}}</a></td>
+            <td>{{menuId.menuName}}</td>
+            <td>{{menuId.price}}</td>
+            <td>
+                {{#isPending}}
+                <a href="/orders/{{orderId}}/next" class="btn btn-outline-primary btn-sm">제조중</a>
+                {{/isPending}}
+                {{#isProcessing}}
+                <a href="/orders/{{orderId}}/next" class="btn btn-outline-danger btn-sm">제조완료</a>
+                {{/isProcessing}}
+                {{#isCompleted}}
+                <a href="" class="btn btn-secondary btn-sm" aria-readonly="true">완료됨</a>
+                {{/isCompleted}}
+            </td>
+            <td><a href="/orders/del/{{orderId}}" class="btn btn-outline-danger btn-sm">삭제</a></td>
+        </tr>
+        {{/order}}
+        </tbody>
+    </table>
+</div>
+
+{{>order/addOrderModal}}
+
+{{>layouts/footer}}
