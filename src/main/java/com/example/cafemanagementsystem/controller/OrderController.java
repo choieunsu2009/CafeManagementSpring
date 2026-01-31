@@ -104,7 +104,7 @@ public class OrderController {
         // 예시:
         Menu menu = menuRepo.findById(menuId).orElse(null);
         Customer customer = customerRepo.findCustomerByPhone(phone);
-        Point point = pointRepo.findLatestByUserId(customer.getUserId());
+        Point point = pointRepo.findLatestByUserId(customer.getUserId()) != null ? pointRepo.findLatestByUserId(customer.getUserId()) : new Point(null, false, null, 0L, customer);
 //        Orders order = new Orders(null, 0L, customer, menu);
 //        orderRepo.save(order);
 
