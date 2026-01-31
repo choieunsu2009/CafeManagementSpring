@@ -26,7 +26,10 @@ public class PointContoller {
         Customer user = customerRepo.findCustomerByPhone(phone);
         log.info(String.valueOf(user.getUserId()));
         Point point = pointRepo.findLatestByUserId(user.getUserId());
-        log.info(point.toString());
-        return point;
+        Point point1;
+        if (point == null) {point1 = new Point(null, false, null, 0L, user);}
+        else {point1 = point;}
+        log.info(point1.toString());
+        return point1;
     }
 }
