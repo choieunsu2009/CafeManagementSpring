@@ -43,6 +43,7 @@ public class CustomerController {
             return "redirect:/customer/add";
         }
         Customer saved = customerRepo.save(customer);
+        Point point = new Point(null, false, 1000L, 1000L, saved);
         return "redirect:/customer/info/" + saved.getUserId();
     }
 
